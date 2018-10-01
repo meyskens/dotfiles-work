@@ -5,8 +5,9 @@ docker run --rm \
         -v /root/:$HOME \
  	-e DISPLAY=unix$DISPLAY \
 	--device /dev/video0 \
-	--device /dev/snd:/dev/snd \
 	--device /dev/dri \
+        --link pulseaudio:pulseaudio \
+        -e PULSE_SERVER=pulseaudio \
 	-v /dev/shm:/dev/shm \
 	jess/zoom-us
 
